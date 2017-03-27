@@ -24,6 +24,36 @@ import org.apache.hadoop.mapreduce.Mapper;
 	      airTemperature = Integer.parseInt(line.substring(87, 92));
 	    }
 	    String quality = line.substring(92, 93);
+
+
+
+/*
+
+
+
+
+int maxValue = Integer.MIN_VALUE;
+for (IntWritable value : values) {
+  maxValue = Math.max(maxValue, value.get());
+}
+context.write(key, new IntWritable(maxValue));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
 	    if (airTemperature != MISSING && quality.matches("[01459]")) {
 	      context.write(new Text(ID_Date), new IntWritable(airTemperature));
 	    }
